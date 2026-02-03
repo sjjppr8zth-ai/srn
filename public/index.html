@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0f6a3a" />
+  <title>Saran | مدیریت املاک</title>
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">S</div>
+      <div class="brand-text">
+        <div class="brand-title">Saran</div>
+        <div class="brand-subtitle">مدیریت املاک (آنلاین/آفلاین)</div>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <div id="netBadge" class="badge">درحال بررسی...</div>
+      <button id="btnSync" class="btn btn-secondary" title="همگام‌سازی">Sync</button>
+      <button id="btnLogout" class="btn btn-danger hidden">خروج</button>
+    </div>
+  </header>
+
+  <main id="app" class="app"></main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script type="module" src="/app.js"></script>
+  <script>
+    // Register SW (safe for Safari)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
